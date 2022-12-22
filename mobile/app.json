@@ -1,7 +1,8 @@
 {
   "expo": {
-    "name": "mobile",
-    "slug": "mobile",
+    "name": "nwl-bolaocopa-mobile",
+    "slug": "nwl-bolaocopa-mobile",
+    "scheme": "nwl-bolaocopa-mobile",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
