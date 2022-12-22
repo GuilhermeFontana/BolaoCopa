@@ -3,9 +3,10 @@ import { Button as ButtonNativeBase, IButtonProps, Text } from "native-base";
 interface Props extends IButtonProps {
   title: string;
   type?: "primary" | "google";
+  uppercase?: Boolean;
 }
 
-export function Button({ title, type = "primary", ...rest }: Props) {
+export function Button({ title, type = "primary", uppercase = true, ...rest }: Props) {
   return (
     <ButtonNativeBase
       w="full"
@@ -26,6 +27,7 @@ export function Button({ title, type = "primary", ...rest }: Props) {
         fontSize="sm"
         fontFamily="heading"
         color={type === "google" ? "white" : "black"}
+        textTransform={!uppercase ? "none" : "uppercase"}
       >
         {title}
       </Text>
