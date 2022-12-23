@@ -1,6 +1,6 @@
 import { FastifyInstance } from "fastify"
 import { guessRoutes } from "./routes/guessRoutes"
-import { poolRoutes } from "./routes/poolRoutes"
+import { pollRoutes } from "./routes/pollRoutes"
 import { userRoutes } from "./routes/userRoutes"
 
 /**
@@ -10,6 +10,6 @@ import { userRoutes } from "./routes/userRoutes"
  */
 export async function routes(fastify: FastifyInstance, options: Object) {
     fastify.register(guessRoutes)
-    fastify.register(poolRoutes)
+    fastify.register(pollRoutes)
     fastify.register(userRoutes)    
 }

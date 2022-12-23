@@ -12,23 +12,23 @@ const prisma = new PrismaClient({
  * @param {FastifyInstance} fastify
  * @param {Object} options
  */
-export async function poolRoutes(fastify: FastifyInstance, options: Object) {
+export async function pollRoutes(fastify: FastifyInstance, options: Object) {
 
-    fastify.get('/pools/count', async () => {
+    fastify.get('/polls/count', async () => {
         return {
-            count: await prisma.pool.count()
+            count: await prisma.poll.count()
         }
     })
 
-    fastify.post('/pool', async (request, reply) => {
-        const cratePoolBody = z.object({
+    fastify.post('/poll', async (request, reply) => {
+        const cratePollBody = z.object({
             title: z.string()
         })
 
-        const { title } = cratePoolBody.parse(request.body)
+        const { title } = cratePollBody.parse(request.body)
         const code = String(new ShortUniqueId({ length: 6 })()).toUpperCase();
 
-        await prisma.pool.create({
+        await prisma.poll.create({
             data: {
                 title,
                 code: code

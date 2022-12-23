@@ -7,26 +7,26 @@ import appPreviewImg from "../assets/app-preview.png";
 import iconCheckImg from "../assets/icon-check.svg";
 
 interface IHomeProps {
-  poolCount: number;
+  pollCount: number;
   guessCount: number;
   userCount: number;
 }
 
 export default function Home(props: IHomeProps) {
-  const [poolTitle, setPoolTitle] = useState("");
+  const [pollTitle, setPollTitle] = useState("");
 
-  async function createPool(e: FormEvent){
+  async function createPoll(e: FormEvent){
     e.preventDefault();
 
-    await api.post("/pool", {
-      title: poolTitle
+    await api.post("/poll", {
+      title: pollTitle
     })
     .then(async (res) => {
       const { code } = res.data
 
       await navigator.clipboard.writeText(code);
       alert(`Bolão criado com sucesso! O código foi copiado para sua área de tranferências`)
-      setPoolTitle(code);
+      setPollTitle(code);
     })
     .catch((err => {
       alert("Ocorreu um erro ao criar o bolão, tente novamente!")
@@ -51,13 +51,13 @@ export default function Home(props: IHomeProps) {
           </strong>
         </div>
 
-        <form className="mt-10 flex gap-2" onSubmit={createPool}>
+        <form className="mt-10 flex gap-2" onSubmit={createPoll}>
           <input
             className="flex-1 px-6 py-4 rounded bg-gray-800 border border-gray-600 text-sm text-gray-100"
             type="text"
             placeholder="Qual o nome do seu bolão?"
-            value={poolTitle}
-            onChange={(e) => setPoolTitle(e.target.value)}
+            value={pollTitle}
+            onChange={(e) => setPollTitle(e.target.value)}
             required
           />
           <button
@@ -77,7 +77,7 @@ export default function Home(props: IHomeProps) {
           <div className="flex items-center gap-6">
             <Image src={iconCheckImg} alt="icon check" />
             <div className="flex flex-col">
-              <span className="font-bold text-2xl">+{props.poolCount}</span>
+              <span className="font-bold text-2xl">+{props.pollCount}</span>
               <span>Bolões criados</span>
             </div>
           </div>
@@ -101,16 +101,16 @@ export default function Home(props: IHomeProps) {
 }
 
 export async function getStaticProps() {
-  const [poolCountResponse, guessCountResponse, userCountResponse] =
+  const [pollCountResponse, guessCountResponse, userCountResponse] =
     await Promise.all([
-      api.get("/pools/count"),
+      api.get("/polls/count"),
       api.get("/guesses/count"),
       api.get("/users/count"),
     ]);
 
   return {
     props: {
-      poolCount: poolCountResponse.data.count,
+      pollCount: pollCountResponse.data.count,
       guessCount: guessCountResponse.data.count,
       userCount: userCountResponse.data.count,
     },
