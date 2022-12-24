@@ -1,11 +1,10 @@
 import { PrismaClient } from "@prisma/client"
 import { FastifyInstance } from "fastify"
-
-const prisma = new PrismaClient({
-    log: ["query"]
-})
+import { prisma } from "../lib/prisma"
 
 /**
+ *
+ *
  * @export
  * @param {FastifyInstance} fastify
  * @param {Object} options

@@ -1,13 +1,11 @@
-import { PrismaClient } from "@prisma/client"
 import { FastifyInstance } from "fastify"
 import { z } from "zod"
 import ShortUniqueId from "short-unique-id"
-
-const prisma = new PrismaClient({
-    log: ["query"]
-})
+import { prisma } from "../lib/prisma"
 
 /**
+ *
+ *
  * @export
  * @param {FastifyInstance} fastify
  * @param {Object} options
@@ -41,5 +39,5 @@ export async function pollRoutes(fastify: FastifyInstance, options: Object) {
                 code
             })
     })
-    
+
 }
