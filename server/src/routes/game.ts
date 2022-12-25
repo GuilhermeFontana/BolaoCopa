@@ -5,9 +5,7 @@ import { prisma } from "../lib/prisma";
  *
  *
  * @export
- * @param {FastifyInstance} astify
+ * @param {FastifyInstance} fastify
  * @param {Object} options
  */
-export async function gameRoute(astify: FastifyInstance, options: Object) {
-
-}
+export async function gameRoutes(fastify: FastifyInstance, options: Object) {}
