@@ -17,8 +17,10 @@ export function SignIn() {
         mt={12}
         onPress={signIn}
         isLoading={isUserLoading}
-        _spinner={{
-          color: "white",
+        _loading={{
+          _spinner: {
+            color: "white",
+          },
         }}
       />
       <Text color="white" textAlign="center" mt={4}>
