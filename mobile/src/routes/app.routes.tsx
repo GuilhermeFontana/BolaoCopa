@@ -54,6 +54,9 @@ export function AppRoutes() {
         component={Find}
         options={{
           tabBarButton: () => null,
+          tabBarStyle: {
+            display: "none",
+          },
         }}
       />
     </Navigator>
