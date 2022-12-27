@@ -17,7 +17,7 @@ model Poll {
   ownerId   String?
   createdAt DateTime @default(now())
 
-  owner        User? @relation(fields: [ownerId], references: [id])
+  owner        User? @relation(fields: [ownerId], references: [id], onDelete: Cascade)
   participants  Participant[]
 }
 model User {
@@ -36,8 +36,8 @@ model Participant {
   userId  String
   pollId  String
 
-  user    User @relation(fields: [userId], references: [id])
-  poll    Poll @relation(fields: [pollId], references: [id])
+  user    User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  poll    Poll @relation(fields: [pollId], references: [id], onDelete: Cascade)
   guesses Guess[]
 
   @@unique([userId, pollId])
@@ -58,8 +58,8 @@ model Guess {
   gameId            String
   participantId     String
 
-  game        Game @relation(fields: [gameId], references: [id])
-  participant Participant @relation(fields: [participantId], references: [id])
+  game        Game @relation(fields: [gameId], references: [id], onDelete: Cascade)
+  participant Participant @relation(fields: [participantId], references: [id], onDelete: Cascade)
 
   @@unique([participantId, gameId])
 }
