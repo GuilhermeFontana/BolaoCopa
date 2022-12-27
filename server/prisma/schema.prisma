@@ -51,13 +51,15 @@ model Game {
   guesses Guess[]
 }
 model Guess {
-  id              String   @id @default(cuid())
-  firstTeamPoint  Int
-  SecondTeamPoint Int
-  createdAt       DateTime @default(now())
-  gameId          String
-  participantId   String
+  id                String   @id @default(cuid())
+  firstTeamPoints   Int
+  secondTeamPoints  Int
+  createdAt         DateTime @default(now())
+  gameId            String
+  participantId     String
 
   game        Game @relation(fields: [gameId], references: [id])
   participant Participant @relation(fields: [participantId], references: [id])
+
+  @@unique([participantId, gameId])
 }
