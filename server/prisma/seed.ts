@@ -90,13 +90,25 @@ async function main() {
       take: getRandom(1, 6),
     });
 
-    if (poll.ownerId)
-      await prisma.participant.create({
-        data: {
-          pollId: poll.id,
-          userId: poll.ownerId,
+    if (poll.ownerId) {
+      const participant = await prisma.participant.findUnique({
+        where: {
+          userId_pollId: {
+            pollId: poll.id,
+            userId: poll.ownerId,
+          },
         },
       });
+
+      if (!participant?.id) {
+        await prisma.participant.create({
+          data: {
+            pollId: poll.id,
+            userId: poll.ownerId,
+          },
+        });
+      }
+    }
 
     users.forEach(async (user) => {
       await prisma.participant.create({

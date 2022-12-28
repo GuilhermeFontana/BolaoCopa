@@ -33,7 +33,7 @@ export async function authRoutes(fastify: FastifyInstance, options: Object) {
         const { code, message } = userResponse.error;
         return reply
           .status(code)
-          .send({ message: message.split(".")[0], providera: "Google" });
+          .send({ message: message.split(".")[0], provider: "Google" });
       }
 
       const userInfoSchema = z.object({
