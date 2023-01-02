@@ -4,7 +4,7 @@ export declare global {
       new: undefined;
       polls: undefined;
       find: undefined;
-      detais: {
+      details: {
         id: string;
       };
     }

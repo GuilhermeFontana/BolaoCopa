@@ -1,7 +1,8 @@
 import { Button, HStack, Text, useTheme, VStack } from "native-base";
 import { X, Check } from "phosphor-react-native";
 import { getName } from "country-list";
-
+import dayjs from "dayjs";
+import ptBR from "dayjs/locale/pt-br";
 import { Team } from "./Team";
 
 interface GuessProps {
@@ -15,6 +16,7 @@ interface GuessProps {
 
 export interface GameProps {
   id: string;
+  date: string;
   firstTeamCountryCode: string;
   secondTeamCountryCode: string;
   guess: null | GuessProps;
@@ -22,7 +24,7 @@ export interface GameProps {
 
 interface Props {
   data: GameProps;
-  onGuessConfirm: () => void;
+  onGuessConfirm: (gameId: string) => void;
   setFirstTeamPoints: (value: string) => void;
   setSecondTeamPoints: (value: string) => void;
 }
@@ -33,6 +35,9 @@ export function Game({
   setSecondTeamPoints,
   onGuessConfirm,
 }: Props) {
+  const when = dayjs(data.date)
+    .locale(ptBR)
+    .format("DD [de] MMMM [de] YYYY [às] HH:mm[h]");
   const { colors, sizes } = useTheme();
 
   return (
@@ -52,7 +57,7 @@ export function Game({
       </Text>
 
       <Text color="gray.200" fontSize="xs">
-        22 de Novembro de 2022 às 16:00h
+        {when}
       </Text>
 
       <HStack
@@ -65,6 +70,7 @@ export function Game({
           code={data.firstTeamCountryCode}
           position="right"
           onChangeText={setFirstTeamPoints}
+          guessValue={data?.guess?.firstTeamPoints}
         />
 
         <X color={colors.gray[300]} size={sizes[6]} />
@@ -73,6 +79,7 @@ export function Game({
           code={data.secondTeamCountryCode}
           position="left"
           onChangeText={setSecondTeamPoints}
+          guessValue={data?.guess?.secondTeamPoints}
         />
       </HStack>
 
@@ -82,11 +89,12 @@ export function Game({
           w="full"
           bgColor="green.500"
           mt={4}
-          onPress={onGuessConfirm}
+          onPress={() => onGuessConfirm(data.id)}
+          _pressed={{ bgColor: "green.800" }}
         >
           <HStack alignItems="center">
             <Text color="white" fontSize="xs" fontFamily="heading" mr={3}>
-              CONFIRMAR PALPITE
+              Confirmar palpite
             </Text>
 
             <Check color={colors.white} size={sizes[4]} />

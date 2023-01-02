@@ -6,6 +6,7 @@ import { PlusCircle, SoccerBall } from "phosphor-react-native";
 import { New } from "../screens/New";
 import { Polls } from "../screens/Polls";
 import { Find } from "../screens/Find";
+import { Details } from "../screens/Details";
 
 export function AppRoutes() {
   const { colors, sizes } = useTheme();
@@ -52,6 +53,16 @@ export function AppRoutes() {
       <Screen
         name="find"
         component={Find}
+        options={{
+          tabBarButton: () => null,
+          tabBarStyle: {
+            display: "none",
+          },
+        }}
+      />
+      <Screen
+        name="details"
+        component={Details}
         options={{
           tabBarButton: () => null,
           tabBarStyle: {

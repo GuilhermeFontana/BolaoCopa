@@ -6,7 +6,7 @@ interface Props {
 
 export function EmptyMyPollList({ code }: Props) {
   return (
-    <Row flexWrap="wrap" justifyContent="center" p={4}>
+    <Row flexWrap="wrap" justifyContent="center" p={5}>
       <Text color="gray.200" fontSize="sm">
         Esse bolão ainda não tem participantes, que tal
       </Text>
