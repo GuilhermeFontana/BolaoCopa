@@ -123,42 +123,42 @@ async function main() {
   await prisma.game.createMany({
     data: [
       {
-        date: "2022-12-09T12:00:00.695Z",
+        date: "2023-12-09T12:00:00.695Z",
         firstTeamCountryCode: "NL",
         secondTeamCountryCode: "AR",
       },
       {
-        date: "2022-12-09T16:00:00.695Z",
+        date: "2023-12-09T16:00:00.695Z",
         firstTeamCountryCode: "US",
         secondTeamCountryCode: "FR",
       },
       {
-        date: "2022-12-10T12:00:00.695Z",
+        date: "2023-12-10T12:00:00.695Z",
         firstTeamCountryCode: "DE",
         secondTeamCountryCode: "BR",
       },
       {
-        date: "2022-12-10T16:00:00.695Z",
+        date: "2023-12-10T16:00:00.695Z",
         firstTeamCountryCode: "HR",
         secondTeamCountryCode: "PT",
       },
       {
-        date: "2022-12-13T16:00:00.695Z",
+        date: "2023-12-13T16:00:00.695Z",
         firstTeamCountryCode: "AR",
         secondTeamCountryCode: "FR",
       },
       {
-        date: "2022-12-14T16:00:00.695Z",
+        date: "2023-12-14T16:00:00.695Z",
         firstTeamCountryCode: "BR",
         secondTeamCountryCode: "PT",
       },
       {
-        date: "2022-12-17T16:00:00.695Z",
+        date: "2023-12-17T16:00:00.695Z",
         firstTeamCountryCode: "FR",
         secondTeamCountryCode: "PT",
       },
       {
-        date: "2022-12-18T16:00:00.695Z",
+        date: "2023-12-18T16:00:00.695Z",
         firstTeamCountryCode: "AR",
         secondTeamCountryCode: "BR",
       },

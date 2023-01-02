@@ -76,7 +76,7 @@ export async function guessRoutes(fastify: FastifyInstance, options: Object) {
           massage: "Jogo não encontrado.",
         });
 
-      if (game.date < new Date())
+      if (game.date <= new Date())
         return reply.status(400).send({
           massage:
             "Você não pode enviar um palpite para um jogo que já aconteceu.",
@@ -85,7 +85,7 @@ export async function guessRoutes(fastify: FastifyInstance, options: Object) {
       return await prisma.guess
         .create({
           data: {
-            gameId: "1234",
+            gameId,
             participantId: participant.id,
             firstTeamPoints,
             secondTeamPoints,
